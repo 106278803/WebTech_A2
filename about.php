@@ -31,12 +31,7 @@
                 
                 
             </div>
-            <div class="navcontainer center">
-                    <div><a href="index.html">Home</a></div>
-                    <div><a href="about.html">About Us</a></div>
-                    <div><a href="jobs.html">Jobs</a></div>
-                    <div><a href="apply.html">Apply</a></div>
-                </div>
+                <?php include 'nav.inc' ?>
             <br><br>
             <div class="button-wrap">
                 <button
@@ -238,6 +233,7 @@
                 </p>
 
              </section>
+             <?php include 'footer.inc'?>
         </body>
         
     </head>

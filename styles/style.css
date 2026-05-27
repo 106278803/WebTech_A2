@@ -1,14 +1,14 @@
 /* Styling for selectors */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: beige;
+    background-color: #111815;
     align-items: center;
     padding-bottom: 60px;
 }
 
 main {
-    background-color: #98ff98;
-    border-color: black;
+    background-color: #21322A;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
     align-items: center;
@@ -22,11 +22,11 @@ main {
 }
 
 footer {
-    background-color: #98ff98;
+    background-color: #1A2820;
     display: flex;
     border: 3px;
     border-style: solid;
-    border-color: black;
+    border-color: #3a5a48;
     border-radius: 10px;
     position: fixed;
     left: 0;
@@ -37,16 +37,16 @@ footer {
 }
 aside {
     float: right;
-    background-color: #98ff98;
-    border: solid black 2px;
+    background-color: #21322A;
+    border: solid #3a5a48 2px;
     border-radius: 5px;
     padding: 3px;
     max-width: 300px;
 }
 
 nav {
-    background-color: #98ff98;
-    border-color: black;
+    background-color: #1A2820;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
 }
@@ -54,27 +54,28 @@ nav {
 a {
     padding: 10px;
     text-decoration: none;
-    color: black;
+    color: #C2D4C8;
 }
 a:hover {
-    color: beige;
+    color: #7BB898;
 }
 
-h1 {
+h1, h2, h3 {
     padding: 10px;
+    color: #7BB898;
 }
 
 table, th, td {
-    border: solid black 1px ;
-    background-color: beige;
+    border: solid #3a5a48 1px ;
+    background-color: #21322A;
 }
 
 section {
     display: fill;
-    background-color: orange;
+    background-color: #283D32;
     padding: 1%;
     margin: 10px;
-    border-color: black;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
     align-items: center;
@@ -83,6 +84,10 @@ section {
 img {
     height: 100%;
     width: 200px;
+}
+
+p {
+    color: #C2D4C8;
 }
 
 /* ID's */
@@ -110,8 +115,8 @@ img {
 
 .container {
     display: flex;
-    background-color: #98ff98;
-    border-color: black;
+    background-color: #1A2820;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
     align-items: center;
@@ -119,9 +124,9 @@ img {
 
 .container div {
     display: fill;
-    background-color: orange;
+    background-color: #283D32;
     margin: 10px;
-    border-color: black;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
     align-items: center;
@@ -130,33 +135,35 @@ img {
 .navcontainer {
     width: 100%;
     display: flex;
-    background-color: #98ff98;
+    background-color: #1A2820;
     border-radius: 5px;
+    flex-wrap: nowrap;
 }
 
 .navcontainer div {
     display: fill;
-    background-color: orange;
+    background-color: #283D32;
     margin: 10px;
-    border-color: black;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
     align-items: center;
+    white-space: nowrap;
 }
 
 .footercontainer {
     width: 100%;
     display: flex;
-    background-color: #98ff98;
+    background-color: #1A2820;
     border-radius: 5px;
     
 }
 
 .footercontainer div {
     display: fill;
-    background-color: orange;
+    background-color: #283D32;
     margin: 10px;
-    border-color: black;
+    border-color: #3a5a48;
     border-style: solid;
     border-radius: 5px;
     align-items: center;
@@ -192,10 +199,10 @@ fieldset {
 
 /* 2. Style the white container */
 .form-container {
-  background-color: orange;
+  background-color: #283D32;
   padding: 40px;
   border-radius: 12px;
-  border: solid black 1px;
+  border: solid #3a5a48 1px;
   width: 100%;
   max-width: 500px;
   text-align: center;
@@ -210,9 +217,9 @@ input, select, fieldset {
   margin-top: 5px;
   margin-bottom: 15px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #3a5a48;
   border-radius: 4px;
-  border-color: black;
+  border-color: #3a5a48;
   border-style: solid;
   box-sizing: border-box; /* Crucial: keeps padding from breaking width */
 }
@@ -220,7 +227,7 @@ input, select, fieldset {
 /* Style that Gender fieldset specifically */
 fieldset {
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #3a5a48;
 }
 
 /* 1. Stop radio buttons from stretching to 100% width */

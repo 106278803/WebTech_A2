@@ -23,14 +23,7 @@
         </div>
         <br>
 
-        <nav>
-            <div class="navcontainer center">
-                <div><a href="index.html"> Home Page</a></div>
-                <div><a href="about.html"> About Page</a></div>
-                <div><a href="jobs.html"> Jobs Page</a></div>
-                <div><a href="apply.html"> Apply Page</a></div>
-            </div>
-        </nav>
+        <?php include 'nav.inc'?>
     </header><br>
 <main class="center">
 <div class="form-container">
@@ -130,11 +123,5 @@
    </form>
 </div>
 </main>
-<footer>
-        <div class="footercontainer">
-            <div><a href="https://github.com/106278803/WebTech_A1" target="_blank">GitHub Link</a></div>
-            <div><a href="https://webtechthree.atlassian.net/jira/software/projects/WTA/summary?atlOrigin=eyJpIjoiMjNmNjIyY2NjZDc1NDRlZDhhMTFiNjBiYzk4MWRmNGYiLCJwIjoiaiJ9" target="_blank">Jira Board</a></div>
-            <div><a href="mailto:106278803@student.swin.edu.au">Email</a></div>
-        </div>
-    </footer>
+    <?php include 'footer.inc' ?>
 </body>

@@ -13,19 +13,7 @@
     </head>
     <body>
     <!--Header that contains the nav bar and regular headings-->
-        <header>
-            <div class="container center">
-                <div><img src="styles/cross.png" alt="Our logo" id="logo"></div>
-                <div>   
-                    <h1>
-                        Welcome to Website Wellness! 
-                    </h1>
-                </div> 
-            </div>
-            <br>
-
-            <?php include 'nav.inc';?>
-        </header>
+        <?php include 'header.inc' ?>
         <br>
     <!-- Main content, structured as a grid -->
         <main class="bgimage grid">
