@@ -132,7 +132,7 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
         if(!empty($_GET["first_name"])) {
             $sql .= " AND FirstName LIKE ?";
             $types .= "s";
-            $params[] = "%" . $_GET["first_name"] . "%"
+            $params[] = "%" . $_GET["first_name"] . "%";
         
         if(!empty($_GET["last_name"])) {
             $sql .= " AND LastName LIKE     ?";
@@ -140,3 +140,38 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
             $params[] = "%" . $_GET["last_name"] . "%";
         }
     }
+
+    $sql .= " ORDER BY $sort";
+    $stmt = mysqli_prepare($conn, $sql);
+
+    if(!empty($params)){
+        mysqli_stmt_bind_param($stmt, $types, ...$params);
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    echo <h2>EOI Results</h2>;
+
+    if(mysqli_num_rows($result) > 0) {
+        echo "<table>";
+        echo "<tr><th>EOI Number</th><th>Job Reference</th><th>First Name</th><th>Last Name</th><th>Status</th></tr>";
+
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>".htmlspecialchars($row["EOINumber"])."</td>";
+            echo "<td>".htmlspecialchars($row["JobReferenceNumber"])."</td>";
+            echo "<td>".htmlspecialchars($row["FirstName"])."</td>";
+            echo "<td>".htmlspecialchars($row["LastName"])."</td>";
+            echo "<td>".htmlspecialchars($row["Status"])."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No EOIs found.</p>";
+    }
+}
+?>
+</body>
+</html>
+
