@@ -1,4 +1,3 @@
-
 <nav>
     <div class="navcontainer center">
         <div><a href="index.php"> Home Page</a></div>
