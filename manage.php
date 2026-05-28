@@ -123,4 +123,20 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
     $types = "";
     $params = [];
 
-    
+    if(isset($_GET["search"])) {
+        if(!empty($_GET["job_ref"])) {
+            $sql .= " AND JobReferenceNumber = ?";
+            $types .= "s";
+            $params[] =$_GET["job_ref"];
+        }
+        if(!empty($_GET["first_name"])) {
+            $sql .= " AND FirstName LIKE ?";
+            $types .= "s";
+            $params[] = "%" . $_GET["first_name"] . "%"
+        
+        if(!empty($_GET["last_name"])) {
+            $sql .= " AND LastName LIKE     ?";
+            $types .= "s";
+            $params[] = "%" . $_GET["last_name"] . "%";
+        }
+    }
