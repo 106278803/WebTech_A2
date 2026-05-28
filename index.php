@@ -14,7 +14,6 @@
     <body>
     <!--Header that contains the nav bar and regular headings-->
         <?php include 'header.inc' ?>
-        <br>
     <!-- Main content, structured as a grid -->
         <main class="bgimage grid">
             <section>
