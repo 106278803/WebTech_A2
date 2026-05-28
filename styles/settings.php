@@ -2,5 +2,8 @@
     $host = 'localhost';
     $user   = "root";
     $pwd    = "";
-    $sql_db = "about.db, jobs.db, eoi.db";
+   
+    $db_eoi   = "eoi";
+    $db_jobs  = "jobs";
+    $db_about = "about";
 ?>
