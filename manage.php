@@ -79,6 +79,16 @@
 <hr>
 
 <?php
+//DELETE LOGIC
+    if(isset($_POST["delete"])) {
+        $job_ref = trim($_POST["delete_job_ref"]);
 
+        $sql = "DELETE FROM eoi WHERE JobReferenceNumber = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $job_ref);
+        my_sqli_stmt_execute($stmt);
+
+        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) "</p>"
+    }
 
 
