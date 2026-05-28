@@ -46,7 +46,7 @@
             </section>
             <section>
                 <h2>Join us</h2>
-                <p>We are always on the lookout for interested individuals to join our team. If you are interested in joining us, please have a look at our <a href="jobs.html" class="nogap">jobs page</a> for all current openings and our <a href="apply.html" class="nogap">apply page</a> to apply for any current job openings both related to wellness and the technical side of our website!</p>
+                <p>We are always on the lookout for interested individuals to join our team. If you are interested in joining us, please have a look at our <a href="jobs.php" class="nogap">jobs page</a> for all current openings and our <a href="apply.php" class="nogap">apply page</a> to apply for any current job openings both related to wellness and the technical side of our website!</p>
             </section>
             <section>
                 <h2>Telehealth sessions are regularly available!</h2>
