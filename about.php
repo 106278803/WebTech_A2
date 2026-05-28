@@ -11,7 +11,7 @@
             <div class="title-bar">
                 <div class="logo-box">
                     <a 
-                        href="index.html"
+                        href="index.php"
                         target="_blank"
                         title="homepage"
                         hreflang="en">
@@ -235,12 +235,12 @@
             <section aria-labelledby="next-steps">
                 <h2 id="next-steps">Next Steps</h2>
                 <p>
-                    If all this sounds exciting to you, we would love to have you join us!: <a href="jobs.html" class="next-step">Check out our opportunities</a>
+                    If all this sounds exciting to you, we would love to have you join us!: <a href="jobs.php" class="next-step">Check out our opportunities</a>
                 </p>
                 <p>
                     
                     <br>
-                    Decided where you want to join?<a href="apply.html" class="next-step"> Apply Here!</a>
+                    Decided where you want to join?<a href="apply.php" class="next-step"> Apply Here!</a>
                 </p>
             </section>
             
