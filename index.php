@@ -51,7 +51,42 @@
             <section>
                 <h2>Telehealth sessions are regularly available!</h2>
                 <img src="styles/telehealth.jpeg" alt="A photo of a telehealth appointment">
-            </section>    
+            </section>
+            <section>
+            <?php
+                require_once"settings.php";
+                $dbconn = @mysqli_connect($host,$user,$pwd,$sql_db);
+                if ($dbconn){
+                        $query = "SELECT * FROM members";
+                        $result = mysqli_query ($dbconn, $query);
+                        if($result && mysqli_num_rows($result) > 0) {
+                            echo "<table?>";
+                            echo "<tr>
+                                    <th>Student ID</th>
+                                    <th>Student Name</th>
+                                    <th>A1 Contribution</th>
+                                    <th>A2 Contribution</th>
+                                </tr>";
+                            while ($row = myqsli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $row['studentID'] . "</td>";
+                                echo "<td>" . $row['studentName'] . "</td>";
+                                echo "<td>" . $row['a1Contribution'] . "</td>";
+                                echo "<td>" . $row['a2Contribution'] . "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "<p>There are no members in this group </p>";
+                        }
+
+                        mysqli_close($dbconn);
+
+                        } else {
+                            echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
+                        }
+            ?>
+            </section>
         </main>
         
         <!--Footer housing all relevnant information-->
