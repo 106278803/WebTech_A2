@@ -37,14 +37,6 @@ $dm = isset($_POST["Digital_Marketing"]) || isset($_POST["Digital Marketing"]) ?
 $data = isset($_POST["Data_Management"]) || isset($_POST["Data Management"]) ? "Yes" : "No";
 $comm = isset($_POST["Communication_Skills"]) || isset($_POST["Communication Skills"]) ? "Yes" : "No";
 
-// shows errors and stops if something is wrong
-if ($errors) {
-    echo "<h1>application not submitted</h1>";
-    foreach ($errors as $e) echo "<p>$e</p>";
-    echo "<a href='apply.html'>Back</a>";
-    exit();
-}
-
 // connects to the database
 $conn = mysqli_connect($host, $user, $pwd, $sql_db) or die("database connection failed.");
 
