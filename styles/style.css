@@ -235,14 +235,23 @@ input[type="radio"] {
   width: auto;
   margin-right: 10px; /* Space between the dot and the word */
   cursor: pointer;
+  background-color: #1A2820;
+  color: #C2D4C8;
 }
 
 input[type="checkbox"] {
   width: auto;
   margin-right: 10px; /* Space between the dot and the word */
   cursor: pointer;
+  background-color: #1A2820;
+    color: #C2D4C8;
 }
 
 legend {
   padding: 0 10px;
+}
+
+input[type="text"] {
+    background-color: #1A2820;
+    color: #C2D4C8;
 }

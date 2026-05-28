@@ -5,5 +5,5 @@
    
     $db_eoi   = "eoi";
     $db_jobs  = "jobs";
-    $db_about = "about";
+    $db_contributions = "contributions";
 ?>
