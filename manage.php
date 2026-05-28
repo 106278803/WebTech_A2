@@ -95,10 +95,30 @@
 if(isset($_POST["update_status"])){ 
     $eoi_number = $_POST["eoi_number"];
 
-    $sql = "UPDATE eoi SET Status = ? WHERE EOINumber = ?"
+    $sql = "UPDATE eoi SET Status = ? WHERE EOINumber = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "si", $status, $eoi_number);
     my_sqli_stmt_execute($stmt);
 
     echo "<p>EOI status updated succesfully.</p>";
 }
+
+//SEARCH and LIST
+if(isset($_POST["search"])) || isset($_GET["list_all"])
+    $allowed_sort = [
+            "EOInumber";
+            "JobReferenceNumber";
+            "FirstName";
+            "LastName";
+            "Status";
+    ];
+
+    $sort = $_GET["sort"] ?? "EOINumber";
+
+    if (!in_array($sort, $allowed_sort)) {
+        $sort = "EOINumber";
+    }
+
+    $sql = "SELECT * FROM eoi WHERE 1=1";
+    $types = "";
+    $params[] = $_GET["job_ref"];
