@@ -1,37 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <link rel="stylesheet" href="styles/about.css">
+        <link rel="stylesheet" href="styles/style.css">
         <meta charset="UTF-8">
         <meta name="description" content="About us">
         <meta name="keywords" content="healthcare, digital, technology">
         <meta name="author" content="Niranjan Nair">
         <title> About us</title>
+    </head>
     <body>
-            <div class="title-bar">
-                <div class="logo-box">
-                    <a 
-                        href="index.php"
-                        target="_blank"
-                        title="homepage"
-                        hreflang="en">
-                        
-                        <img src="images/cross.png"
-                        alt="Wellness Logo" 
-                        class="logo"
-                        title="Wellness Logo"
-                        loading="lazy">
-
-                    </a>
-                    
-                
-                </div>
-                
-                <h1>About Us</h1>
-                
-                
-            </div>
-                <?php include 'nav.inc' ?>
+            <?php include 'header.inc' ?>
             <br><br>
             <div class="button-wrap">
                 <button
@@ -229,7 +207,7 @@
                         } else {
                             echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
                         }
-            ?>
+                ?>
             </main>
            
             <section aria-labelledby="next-steps">
@@ -271,6 +249,6 @@
              <?php include 'footer.inc'?>
         </body>
         
-    </head>
+    
 </html>
 
