@@ -6,7 +6,7 @@
         <meta name="author" content="Lachie Colville">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" href="styles\style.css">
+        <link rel="stylesheet" href="styles/style.css">
         <link rel="icon" href="styles/cross.png">
 
         <title>Website Wellness Home</title>
