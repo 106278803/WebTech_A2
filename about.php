@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="icon" href="styles/cross.png">
         <meta charset="UTF-8">
         <meta name="description" content="About us">
         <meta name="keywords" content="healthcare, digital, technology">
