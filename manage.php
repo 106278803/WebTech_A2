@@ -88,7 +88,17 @@
         mysqli_stmt_bind_param($stmt, "s", $job_ref);
         my_sqli_stmt_execute($stmt);
 
-        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) "</p>"
+        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) "</p>";
     }
 
+//UPDATE STATUS
+if(isset($_POST["update_status"])){ 
+    $eoi_number = $_POST["eoi_number"];
 
+    $sql = "UPDATE eoi SET Status = ? WHERE EOINumber = ?"
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "si", $status, $eoi_number);
+    my_sqli_stmt_execute($stmt);
+
+    echo "<p>EOI status updated succesfully.</p>";
+}
