@@ -121,20 +121,6 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
 
     $sql = "SELECT * FROM eoi WHERE 1=1";
     $types = "";
-    $params[] = $_GET["job_ref"];
+    $params = [];
 
-    if(isset($_GET["search"])) {
-        if(!empty($_GET["job_ref"])) {
-            $sql = "AND JobReferenceNumber = ?";
-            $types = "s";
-            $params[] = "%" . $_GET["last_name"] . "%";
-        }
-    }
-
-    $sql .= "ORDER BY $sort";
-
-    $stmt = mysqli_prepare($conn, $sql);
-
-    if(!empty($params)) {
-        mysqli_stmt_bind_param($stmt, $types ...$params);
-    }
+    
