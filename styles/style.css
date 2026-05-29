@@ -83,7 +83,7 @@ section {
 
 nav input[type="text"] {
     width: auto;
-    padding: 2px;        /* match your nav link padding */
+    padding: 3px;        /* match your nav link padding */
     height: 100%;
     box-sizing: border-box;
     margin: 0;

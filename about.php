@@ -61,21 +61,20 @@
                         <br>
                     </li>
                     <li>
-                        <p class = "type"><strong>Accesibility Team:</strong> Ensures our products are usable with assistive technologies and follow strong accessibility practices.</p>
+                        <p class = "type"><strong>Accessibility Team:</strong> Ensures our products are usable with assistive technologies and follow strong accessibility practices.</p>
                         <br>
                         <ul class = "class-times">
                             <li>Monday, 9:00 AM - Patient onboarding review</li>
                             <li>Wednesday, 1:30 PM - Support flow workshop </li>
                         </ul>
-                        <li>
-                            <p class = "type"><strong>Clinical Content Team:</strong> Focuses on creating clear, concise and empathetic content for patients</p>
-                            <br>
-                            <ul class = "class-times">
-                                <li>Monday, 11:00 AM - Content review and feedback</li>
-                                <li>Friday, 2:00 PM - User testing with patients</li>
-                            </ul>
-
-                        </li>
+                    </li>
+                    <li>
+                        <p class = "type"><strong>Clinical Content Team:</strong> Focuses on creating clear, concise and empathetic content for patients</p>
+                        <br>
+                        <ul class = "class-times">
+                            <li>Monday, 11:00 AM - Content review and feedback</li>
+                            <li>Friday, 2:00 PM - User testing with patients</li>
+                        </ul>
                     </li>
                 </ul>
             </section>
