@@ -6,7 +6,7 @@
 </head>
 <body>
     <header><h1>HR Manager Login</h1></header>
-    <form method="post" action="process.php">
+    <form method="post" action="login.php">
         <label for="username">Username:</label>
         <input type="text" name="username" required><br><br>
 
