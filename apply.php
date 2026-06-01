@@ -12,19 +12,9 @@
     <title>Job Application Form</title>
 </head>
 <body>
-<header>
-        <div class="container center">
-            <div><img src="styles/cross.png" alt="Our logo" id="logo"></div>
-            <div>   
-                <h1>
-                    Welcome to Website Wellness! 
-                </h1>
-            </div> 
-        </div>
-        <br>
+    
+<?php include 'header.inc'?>
 
-        <?php include 'nav.inc'?>
-    </header><br>
 <main class="center">
 <div class="form-container">
    <h1>Job Application Form</h1> 

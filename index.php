@@ -13,32 +13,7 @@
 </head>
 <body>
 <!--Header that contains the nav bar and regular headings-->
-    <header>
-        <div class="container center">
-            <div><img src="styles/cross.png" alt="Our logo" id="logo"></div>
-            <div>   
-                <h1>
-                    Welcome to Website Wellness! 
-                </h1>
-            </div> 
-        </div>
-        <br>
-
-        <nav>
-            <div class="navcontainer center">
-                <div><a href="index.html"> Home Page</a></div>
-                <div><a href="about.html"> About Page</a></div>
-                <div><a href="jobs.html"> Jobs Page</a></div>
-                <div><a href="apply.html"> Apply Page</a></div>
-                <div>
-                    <form action="" mathod="GET">
-                        <input type="text" name="query" aria-label="Search the site" placeholder="Search jobs...">
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php include 'header.inc'?>
     <br>
 <!-- Main content, structured as a grid -->
     <main class="bgimage grid">
