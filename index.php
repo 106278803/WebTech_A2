@@ -50,7 +50,7 @@
         </section>
         <section>
             <h2>Telehealth sessions are regularly available!</h2>
-            <img src="styles/telehealth.jpeg" alt="A photo of a telehealth appointment">
+            <img src="styles/telehealth.jpeg" alt="A photo of a telehealth appointment" id="image">
         </section>    
     </main>
     
