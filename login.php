@@ -9,17 +9,27 @@ if (!$conn) {
 }
 
 $admin = "admin";
-$check = $conn->prepare("SELECT * FROM users WHERE username = ?");
+$default_password = "admin";
+$check = $conn->prepare("SELECT password FROM users WHERE username = ?");
 $check->bind_param("s", $admin);
 $check->execute();
 $check_result = $check->get_result();
 
 if ($check_result->num_rows === 0) {
-    $plain_password = "admin"; 
+    $hashed_password = password_hash($default_password, PASSWORD_DEFAULT);
     $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-    $insert->bind_param("ss", $admin, $plain_password);
+    $insert->bind_param("ss", $admin, $hashed_password);
     $insert->execute();
     $insert->close();
+} else {
+    $admin_user = $check_result->fetch_assoc();
+    if (!password_verify($default_password, $admin_user['password'])) {
+        $hashed_password = password_hash($default_password, PASSWORD_DEFAULT);
+        $update = $conn->prepare("UPDATE users SET password = ? WHERE username = ?");
+        $update->bind_param("ss", $hashed_password, $admin);
+        $update->execute();
+        $update->close();
+    }
 }
 $check->close();
 
@@ -33,14 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
-if ($user && $password === $user['password']) {
-    session_regenerate_id(true);
-    $_SESSION['username'] = $user['username'];
-    header("Location: manage.php");
-    exit();
-} else {
-    echo "Incorrect username or password.";
-}
+    if ($user && password_verify($password, $user['password'])) {
+        session_regenerate_id(true);
+        $_SESSION['username'] = $user['username'];
+        header("Location: manage.php");
+        exit();
+    } else {
+        echo "Incorrect username or password.";
+    }
 
     $stmt->close();
 }

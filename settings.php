@@ -1,7 +1,7 @@
 
 <?php
-    $host = "localhost";
-    $user = "root";
-    $pwd = "";
-    $sql_db = "webtech_a2";
+$host = "localhost";
+$user = "root";
+$pwd = "";
+$sql_db = "webtech_a2";
 ?>

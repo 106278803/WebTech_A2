@@ -1,4 +1,12 @@
-<?php require_once 'settings.php'; ?>
+<?php
+require_once 'settings.php';
+
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +41,7 @@
         <option value="JobReferenceNumber">Job Reference</option>
         <option value="FirstName">First Name</option>
         <option value="LastName">Last Name</option>
-        <option value="Status">Status</option>
+        <option value="status">Status</option>
     </select>
 
     <button type="submit" name="search">Search EOIs</button>
@@ -85,39 +93,66 @@
 
         $sql = "DELETE FROM eoi WHERE JobReferenceNumber = ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $job_ref);
-        my_sqli_stmt_execute($stmt);
 
-        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) ;
-        echo "</p>";
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "s", $job_ref);
+            mysqli_stmt_execute($stmt);
+            $deleted_count = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+
+            if ($deleted_count > 0) {
+                echo "<p>Deleted " . $deleted_count . " EOI(s) for Job Reference: " . htmlspecialchars($job_ref) . "</p>";
+            } else {
+                echo "<p>No EOIs found for Job Reference: " . htmlspecialchars($job_ref) . "</p>";
+            }
+        } else {
+            echo "<p>Delete failed: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
+        }
     }
 
 //UPDATE STATUS
 if(isset($_POST["update_status"])){ 
-    $eoi_number = $_POST["eoi_number"];
+    $eoi_number = (int) $_POST["eoi_number"];
+    $status = $_POST["status"];
+    $allowed_statuses = ["New", "Current", "Final"];
 
-    $sql = "UPDATE eoi SET Status = ? WHERE EOINumber = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "si", $status, $eoi_number);
-    my_sqli_stmt_execute($stmt);
+    if (!in_array($status, $allowed_statuses)) {
+        echo "<p>Invalid status selected.</p>";
+    } else {
+        $sql = "UPDATE eoi SET status = ? WHERE EOInumber = ?";
+        $stmt = mysqli_prepare($conn, $sql);
 
-    echo "<p>EOI status updated succesfully.</p>";
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "si", $status, $eoi_number);
+            mysqli_stmt_execute($stmt);
+            $updated_count = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+
+            if ($updated_count > 0) {
+                echo "<p>EOI status updated successfully.</p>";
+            } else {
+                echo "<p>No status changed. Check that EOI Number " . htmlspecialchars((string) $eoi_number) . " exists and is not already set to " . htmlspecialchars($status) . ".</p>";
+            }
+        } else {
+            echo "<p>Status update failed: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
+        }
+    }
 }
 
 //SEARCH and LIST
-if(isset($_POST["search"]) || isset($_GET["list_all"]))
+if(isset($_GET["search"]) || isset($_GET["list_all"])) {
     $allowed_sort = [
             "EOInumber",
             "JobReferenceNumber",
             "FirstName",
             "LastName",
-            "Status",
+            "status"
     ];
 
-    $sort = $_GET["sort"] ?? "EOINumber";
+    $sort = $_GET["sort"] ?? "EOInumber";
 
     if (!in_array($sort, $allowed_sort)) {
-        $sort = "EOINumber";
+        $sort = "EOInumber";
     }
 
     $sql = "SELECT * FROM eoi WHERE 1=1";
@@ -134,9 +169,10 @@ if(isset($_POST["search"]) || isset($_GET["list_all"]))
             $sql .= " AND FirstName LIKE ?";
             $types .= "s";
             $params[] = "%" . $_GET["first_name"] . "%";
+        }
         
         if(!empty($_GET["last_name"])) {
-            $sql .= " AND LastName LIKE     ?";
+            $sql .= " AND LastName LIKE ?";
             $types .= "s";
             $params[] = "%" . $_GET["last_name"] . "%";
         }
@@ -144,6 +180,11 @@ if(isset($_POST["search"]) || isset($_GET["list_all"]))
 
     $sql .= " ORDER BY $sort";
     $stmt = mysqli_prepare($conn, $sql);
+
+    if (!$stmt) {
+        echo "<p>Search failed: " . htmlspecialchars(mysqli_error($conn)) . "</p>";
+        exit;
+    }
 
     if(!empty($params)){
         mysqli_stmt_bind_param($stmt, $types, ...$params);
@@ -160,11 +201,11 @@ if(isset($_POST["search"]) || isset($_GET["list_all"]))
 
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<td>".htmlspecialchars($row["EOINumber"])."</td>";
+            echo "<td>".htmlspecialchars($row["EOInumber"])."</td>";
             echo "<td>".htmlspecialchars($row["JobReferenceNumber"])."</td>";
             echo "<td>".htmlspecialchars($row["FirstName"])."</td>";
             echo "<td>".htmlspecialchars($row["LastName"])."</td>";
-            echo "<td>".htmlspecialchars($row["Status"])."</td>";
+            echo "<td>".htmlspecialchars($row["status"])."</td>";
             echo "</tr>";
         }
         echo "</table>";
