@@ -51,8 +51,7 @@
         </section>
         <section aria-labelledby="Telehealth options">
             <h2>Telehealth sessions are regularly available!</h2>
-            <img src="styles/telehealth.jpeg" alt="A photo of a telehealth appointment">
-            <p>Here at Website Wellness, we off regular telehealth sessions for anyone who feels that they need it. This covers regular referrals from our GP team, to getting in contact with specialists and therapist for other more specific matters.</p>
+            <img src="styles/telehealth.jpeg" alt="A photo of a telehealth appointment" id="image">
         </section>    
     </main>
     
