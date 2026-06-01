@@ -248,3 +248,9 @@ input[type="checkbox"] {
 legend {
   padding: 0 10px;
 }
+
+@media(max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
