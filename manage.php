@@ -88,7 +88,8 @@
         mysqli_stmt_bind_param($stmt, "s", $job_ref);
         my_sqli_stmt_execute($stmt);
 
-        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) "</p>";
+        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) ;
+        echo "</p>";
     }
 
 //UPDATE STATUS
@@ -104,13 +105,13 @@ if(isset($_POST["update_status"])){
 }
 
 //SEARCH and LIST
-if(isset($_POST["search"])) || isset($_GET["list_all"])
+if(isset($_POST["search"]) || isset($_GET["list_all"]))
     $allowed_sort = [
-            "EOInumber";
-            "JobReferenceNumber";
-            "FirstName";
-            "LastName";
-            "Status";
+            "EOInumber",
+            "JobReferenceNumber",
+            "FirstName",
+            "LastName",
+            "Status",
     ];
 
     $sort = $_GET["sort"] ?? "EOINumber";
@@ -151,7 +152,7 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    echo <h2>EOI Results</h2>;
+    echo "<h2>EOI Results</h2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<table>";

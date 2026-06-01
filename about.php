@@ -144,7 +144,7 @@
             <h2> Please find all member contributions across both assignments below! </h2>
             <?php
             require_once"settings.php";
-            $dbconn = @mysqli_connect($host,$user,$pwd,$db_contributions);
+            $dbconn = @mysqli_connect($host,$user,$pwd,$sql_db);
             if ($dbconn){
                 $query = "SELECT * FROM members";
                 $result = mysqli_query ($dbconn, $query);
