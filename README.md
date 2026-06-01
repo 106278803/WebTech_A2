@@ -1,2 +1,2 @@
-# WebTech_A1
-Assignment 1 of Web Tech
+# WebTech_A2
+Assignment 2 of Web Tech
