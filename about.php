@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="About us">
         <meta name="keywords" content="healthcare, digital, technology">
-        <meta name="author" content="Niranjan Nair">
+        <meta name="author" content="A1: Niranjan Nair, A2: Lachie Colville">
         <title> About us</title>
     </head>
     <body>
@@ -16,7 +16,7 @@
             <section aria-labelledby="mission">
                 <h2 id = "mission">Our Mission</h2>
                 <p>
-                    We at Wellness are commited to ensuring that all members of our community enjoy a caring and supportive journey to
+                    We at Wellness are committed to ensuring that all members of our community enjoy a caring and supportive journey to
                     better health.
                 </p>
             </section>
