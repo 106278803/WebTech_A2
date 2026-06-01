@@ -15,7 +15,7 @@
     <fieldset>        
         <label for="JobReferenceNumber">Job Reference Number</label><br>
         <input type="text" id="JobReferenceNumber" name="JobReferenceNumber"
-        pattern="[a-zA-Z0-9]{5}" required> 
+        pattern="[a-zA-Z0-9]{5}" maxlength="5" required> 
         <br><br>
 
         <label for="FirstName">First Name</label><br>
@@ -54,7 +54,7 @@
 
         <label for="StreetAddress">Street Address</label><br>
         <input type="text" id="StreetAddress" name="StreetAddress" 
-        pattern="[A-Za-z\s\-]{1,40}" required>
+        pattern="[A-Za-z0-9\s\-]{1,40}" required>
         <br><br>
 
         <label for="Suburb/Town">Suburb/Town</label><br>
@@ -64,7 +64,7 @@
 
         <label for="State">State</label><br>
         <select id="State" name="State">
-            <option value="Select any one"> Please Select</option>
+            <option value=""> Please Select</option>
             <option value="VIC">VIC</option>
             <option value="NSW">NSW</option>
             <option value="QLD">QLD</option>
@@ -90,19 +90,27 @@
         pattern="\d{8,12}" required>
         <br><br>
 
-        <label for="Skills">Skill list</label><br>
-        <input type="checkbox" name="Project Management"> Project Management <br>
-        <input type="checkbox" name="Digital Marketing"> Digital Marketing <br>
-        <input type="checkbox" name="Data Management"> Data Management <br>
-        <input type="checkbox" name="Communication Skills"> Communication Skills
-        <br><br>
+        <p>Skill list</p>
 
-        <label for="Skills">Other Skills</label><br>
-        <textarea name="Skills" id="Skills" rows="5" cols="40"
+        <input type="checkbox" id="pm" name="skills[]" value="pm">
+        <label for="pm">Project Management</label><br>
+
+        <input type="checkbox" id="dm" name="skills[]" value="dm">
+        <label for="dm">Digital Marketing</label><br>
+
+        <input type="checkbox" id="data" name="skills[]" value="data">
+        <label for="data">Data Management</label><br>
+
+        <input type="checkbox" id="comm" name="skills[]" value="comm">
+        <label for="comm">Communication Skills</label><br>
+
+        <label for="other_skills">Other Skills</label><br>
+        <textarea name="other_skills" id="other_skills" rows="5" cols="40"
             placeholder="Enter any other applicable skills here"></textarea>
     </fieldset>
      <br><br>
      <input type="submit" value="Apply">
+     <input type="reset" value="Reset Form">
    </form>
 </div>
 </body>
