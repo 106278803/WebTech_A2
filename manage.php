@@ -29,7 +29,7 @@
 
     <label>Sort By:</label>
     <select name="sort">
-        <option value="EOInumber">EOI Number</option>
+        <option value="EOINumber">EOI Number</option>
         <option value="JobReferenceNumber">Job Reference</option>
         <option value="FirstName">First Name</option>
         <option value="LastName">Last Name</option>
@@ -49,7 +49,7 @@
     <h2>Delete EOIs by Job Reference</h2>
 
     <label>Job Reference:</label>
-    <input type="text" name="delete_job_ref" required>
+,    <input type="text" name="delete_job_ref" required>
 
     <button type="submit" name="delete">Delete</button>
 
@@ -81,36 +81,37 @@
 <?php
 //DELETE LOGIC
     if(isset($_POST["delete"])) {
-        $job_ref = trim($_POST["delete_job_ref"]);
+        $job_ref = $_POST["delete_job_ref"];
 
         $sql = "DELETE FROM eoi WHERE JobReferenceNumber = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "s", $job_ref);
-        my_sqli_stmt_execute($stmt);
+        mysqli_stmt_execute($stmt);
 
-        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) "</p>";
+        echo "<p>Deleted EOIs for Job Reference: ".htmlspecialchars($job_ref) . "</p>";
     }
 
 //UPDATE STATUS
 if(isset($_POST["update_status"])){ 
     $eoi_number = $_POST["eoi_number"];
+    $status = $_POST["status"];
 
     $sql = "UPDATE eoi SET Status = ? WHERE EOINumber = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "si", $status, $eoi_number);
-    my_sqli_stmt_execute($stmt);
+    mysqli_stmt_execute($stmt);
 
     echo "<p>EOI status updated succesfully.</p>";
 }
 
 //SEARCH and LIST
-if(isset($_POST["search"])) || isset($_GET["list_all"])
+if(isset($_GET["search"]) || isset($_GET["list_all"])) {
     $allowed_sort = [
-            "EOInumber";
-            "JobReferenceNumber";
-            "FirstName";
-            "LastName";
-            "Status";
+            "EOINumber",
+            "JobReferenceNumber",
+            "FirstName",
+            "LastName",
+            "Status"
     ];
 
     $sort = $_GET["sort"] ?? "EOINumber";
@@ -133,9 +134,10 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
             $sql .= " AND FirstName LIKE ?";
             $types .= "s";
             $params[] = "%" . $_GET["first_name"] . "%";
+        }
         
         if(!empty($_GET["last_name"])) {
-            $sql .= " AND LastName LIKE     ?";
+            $sql .= " AND LastName LIKE ?";
             $types .= "s";
             $params[] = "%" . $_GET["last_name"] . "%";
         }
@@ -151,7 +153,7 @@ if(isset($_POST["search"])) || isset($_GET["list_all"])
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    echo <h2>EOI Results</h2>;
+    echo "<h2>EOI Results</h2>";
 
     if(mysqli_num_rows($result) > 0) {
         echo "<table>";
