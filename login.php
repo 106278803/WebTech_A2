@@ -15,9 +15,9 @@ $check->execute();
 $check_result = $check->get_result();
 
 if ($check_result->num_rows === 0) {
-    $hashed_password = password_hash("admin", PASSWORD_DEFAULT);
+    $plain_password = "admin"; 
     $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-    $insert->bind_param("ss", $admin, $hashed_password);
+    $insert->bind_param("ss", $admin, $plain_password);
     $insert->execute();
     $insert->close();
 }
@@ -33,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
-    if ($user && password_verify($password, $user['password'])) {
-        session_regenerate_id(true);
-        $_SESSION['username'] = $user['username'];
-        header("Location: manage.php");
-        exit();
-    } else {
-        echo "Incorrect username or password.";
-    }
+if ($user && $password === $user['password']) {
+    session_regenerate_id(true);
+    $_SESSION['username'] = $user['username'];
+    header("Location: manage.php");
+    exit();
+} else {
+    echo "Incorrect username or password.";
+}
 
     $stmt->close();
 }
