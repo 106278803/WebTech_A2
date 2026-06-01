@@ -4,6 +4,7 @@ $user = "root";
 $pwd = "";
 $sql_db = "webtech_a2";
 ?>
+
 <?php
     $host = "localhost";
     $user = "root";
