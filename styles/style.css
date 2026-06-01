@@ -12,7 +12,7 @@
 
 /* Page title */
 .admin-dashboard h1 {
-    background-color: #1f3a5f;
+    background-color: orange;
     color: white;
     text-align: center;
     padding: 20px;
@@ -57,7 +57,7 @@
 
 /* Buttons */
 .admin-dashboard button {
-    background-color: #1f3a5f;
+    background-color: orange;
     color: white;
     border: none;
     padding: 10px 18px;

@@ -2,20 +2,58 @@
 session_start();
 require_once("settings.php");
 
-$conn = mysql_connect($host, $user, $pwd, $sql_db);
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-$username=$_POST('username');
-$password=$_POST('password');
-
-
-$query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-$result = mysqli_query($conn, $query);
-$user = mysqli_fetch_assoc($result);
-
-if($username=='admin' && $password == 'admin') {
-    $_SESSION['username'] = $username;
-    header('Location: manage.php');
-} else {
-    echo "Invalid login";
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+
+$admin = "admin";
+$default_password = "admin";
+$check = $conn->prepare("SELECT password FROM users WHERE username = ?");
+$check->bind_param("s", $admin);
+$check->execute();
+$check_result = $check->get_result();
+
+if ($check_result->num_rows === 0) {
+    $hashed_password = password_hash($default_password, PASSWORD_DEFAULT);
+    $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+    $insert->bind_param("ss", $admin, $hashed_password);
+    $insert->execute();
+    $insert->close();
+} else {
+    $admin_user = $check_result->fetch_assoc();
+    if (!password_verify($default_password, $admin_user['password'])) {
+        $hashed_password = password_hash($default_password, PASSWORD_DEFAULT);
+        $update = $conn->prepare("UPDATE users SET password = ? WHERE username = ?");
+        $update->bind_param("ss", $hashed_password, $admin);
+        $update->execute();
+        $update->close();
+    }
+}
+$check->close();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $username=trim($_POST['username']);
+    $password=trim($_POST['password']);
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user && password_verify($password, $user['password'])) {
+        session_regenerate_id(true);
+        $_SESSION['username'] = $user['username'];
+        header("Location: manage.php");
+        exit();
+    } else {
+        echo "Incorrect username or password.";
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
 ?>
