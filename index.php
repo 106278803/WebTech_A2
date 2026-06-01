@@ -18,11 +18,11 @@
     <br>
 <!-- Main content, structured as a grid -->
     <main class="bgimage grid">
-        <section>
+        <section aria-labelledby="introduction">
             <h2 style="color:brown; font-style: italic">Wellness is well-worth it</h2>
             <p>Website wellness is the one-stop-shop for all your digital wellbeing needs. At website wellness, we provide a variety of different web-based and phone-based services that can help improve you life as soon as possible!</p>
         </section>
-        <section>
+        <section aria-labelledby="services">
             <h2>Please check out some of our services!</h2>
             <table>
                 <tr>
@@ -45,11 +45,11 @@
                 </tr>
             </table>
         </section>
-        <section>
+        <section aria-labelledby="Join us">
             <h2>Join us</h2>
             <p>We are always on the lookout for interested individuals to join our team. If you are interested in joining us, please have a look at our <a href="jobs.html" class="nogap">jobs page</a> for all current openings and our <a href="apply.html" class="nogap">apply page</a> to apply for any current job openings both related to wellness and the technical side of our website!</p>
         </section>
-        <section>
+        <section aria-labelledby="Telehealth options">
             <h2>Telehealth sessions are regularly available!</h2>
             <img src="styles/telehealth.jpeg" alt="A photo of a telehealth appointment">
             <p>Here at Website Wellness, we off regular telehealth sessions for anyone who feels that they need it. This covers regular referrals from our GP team, to getting in contact with specialists and therapist for other more specific matters.</p>
